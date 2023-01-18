@@ -239,4 +239,21 @@ const pets = [
       type: "dino",
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
+
   ];
+
+  const targetingApp = document.querySelector("#pet");
+  let domString = "";
+  for (const pet of pets) {
+    domString += `<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>`;
+  }
+
+
+targetingApp.innerHTML = domString;
