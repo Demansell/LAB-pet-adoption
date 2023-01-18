@@ -243,17 +243,21 @@ const pets = [
   ];
 
   const targetingApp = document.querySelector("#pet");
+  
   let domString = "";
   for (const pet of pets) {
+   
     domString += `<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">${pet.name}</h5>
+      <p class="card-text">${pet.color}</p>
+      <p class="card-text">${pet.specialSkill}</p>
+      <p class="card-text">${pet.type}</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>`;
-  }
+  };
 
 
-targetingApp.innerHTML = domString;
+targetingApp.innerHTML = domString
