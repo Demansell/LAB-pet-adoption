@@ -314,19 +314,24 @@ showDinos.addEventListener("click", () => {
 const createPet = (e) => {
   e.preventDefault(); //every time you create a form
 
-  const newPet = {
-    id: pets.length + 1,
-    const name = document.querySelector("#name").value,
-    const color = document.querySelector ("#color").value,
-    const specialSkill = document.querySelector ("#specialSkill").value,
-    const  type = document.querySelector ("#type").value,
-    image: document.querySelector ("#image").value
-  }
+    const name = document.querySelector("#name");
+    const color = document.querySelector ("#color");
+    const specialSkill = document.querySelector ("#specialSkill");
+    const type = document.querySelector ("#type");
+    const image = document.querySelector("#image");
+ 
+    const newPet = {
+      name: name.value,
+      color: color.value,
+      specialSkill: specialSkill.value,
+      type: type.value,
+      image: image.value
+    };
+    pets.push(newPet);
+    cardsOnDom(pets)
+};
 
-  pets.push(newPet);
-  cardsOnDom(pets);
-  form.reset();
-}
 
 // add an event listener 
-form.addEventListener('submit', createPet)
+const submitButton = document.querySelector("form-submit");
+submitButton.addEventListener("click", createPet);
