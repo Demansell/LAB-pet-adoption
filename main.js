@@ -260,6 +260,7 @@ const pets = [
       <p class="card-text">${pet.color}</p>
       <p class="card-text">${pet.specialSkill}</p>
       <p class="card-text">${pet.type}</p>
+      <button class="btn btn-danger" id="delete--${member.id}">Delete</button>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>`;
@@ -306,3 +307,26 @@ showDinos.addEventListener("click", () => {
   cardsOnDom(dinoFilter)
   }
 )
+
+
+// creates a function that grabs all the values from the form pushes new object to array and rerenders to the DOM 
+
+const createPet = (e) => {
+  e.preventDefault(); //every time you create a form
+
+  const newPet = {
+    id: pets.length + 1,
+    const name = document.querySelector("#name").value,
+    const color = document.querySelector ("#color").value,
+    const specialSkill = document.querySelector ("#specialSkill").value,
+    const  type = document.querySelector ("#type").value,
+    image: document.querySelector ("#image").value
+  }
+
+  pets.push(newPet);
+  cardsOnDom(pets);
+  form.reset();
+}
+
+// add an event listener 
+form.addEventListener('submit', createPet)
