@@ -316,10 +316,10 @@ const createPet = (e) => {
 
   const newPet = {
     id: pets.length + 1,
-    name: document.querySelector("#name").value,
-    color: document.querySelector ("#color").value,
-    specialSkill: document.querySelector ("#specialSkill").value,
-    type: document.querySelector ("#type").value,
+    const name = document.querySelector("#name").value,
+    const color = document.querySelector ("#color").value,
+    const specialSkill = document.querySelector ("#specialSkill").value,
+    const  type = document.querySelector ("#type").value,
     image: document.querySelector ("#image").value
   }
 
