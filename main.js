@@ -260,8 +260,8 @@ const pets = [
       <p class="card-text">${pet.color}</p>
       <p class="card-text">${pet.specialSkill}</p>
       <p class="card-text">${pet.type}</p>
-      <button class="btn btn-danger" id="delete--${member.id}">Delete</button>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
+      
     </div>
   </div>`;
   };
@@ -311,22 +311,67 @@ showDinos.addEventListener("click", () => {
 
 // creates a function that grabs all the values from the form pushes new object to array and rerenders to the DOM 
 
-const createPet = (e) => {
-  e.preventDefault(); //every time you create a form
+const createPet = (event) => {
+  event.preventDefault(); //every time you create a form
 
-  const newPet = {
-    id: pets.length + 1,
-    const name = document.querySelector("#name").value,
-    const color = document.querySelector ("#color").value,
-    const specialSkill = document.querySelector ("#specialSkill").value,
-    const  type = document.querySelector ("#type").value,
-    image: document.querySelector ("#image").value
-  }
+  // take values 
+    const name = document.querySelector(".name");
+    const color = document.querySelector (".color");
+    const specialSkill = document.querySelector (".specialSkill");
+    const type = document.querySelector (".type");
+    const image = document.querySelector(".image");
+    const id = pets.length + 1;
+ 
+    //create new object from values
+    const newPet = {
+      name: name.value,
+      color: color.value,
+      specialSkill: specialSkill.value,
+      type: type.value,
+      image: image.value
+    };
 
-  pets.push(newPet);
+    pets.push(newPet);
+
+    cardsOnDom(pets);
+
+};
+
+// add an event listener for the fom and pass new pet 
+const submitButton = document.querySelector("#form-submit");
+submitButton.addEventListener("click", createPet);
+
+const startWeb = () => {
   cardsOnDom(pets);
-  form.reset();
+};
+
+startWeb();
+
+//target div
+const appDiv = document.querySelector("#app");
+// 3. check e.target.id includes "delete"
+appDiv.addEventListener ("click", (event) => {
+if (event.target.id.includes("delete")) {
+
+  // logic to remove from array
+  const [, id] = event.target.id.split("--");
+      // what object needs to be removed and I know my memberId
+    
+      //Find where the object we want to delete is in the array
+    const indexOfPet = pets.findIndex(
+      event => event.id === Number(id)
+    );
+
+      // Now we can use a splice to delete the object at the index
+      pets.splice(indexOfPet, 1);
+    
+
+    cardsOnDom(pets);
+}
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
 }
 
-// add an event listener 
-form.addEventListener('submit', createPet)
+startApp();
